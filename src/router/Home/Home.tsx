@@ -7,11 +7,11 @@ const Home = () => (
       container
       direction="row"
       alignItems="flex-start"
-      justifyContent="center"
+      justifyContent="flex-start"
       flexWrap="wrap"
       sx={{ height: "100%", pt: 20 }}
     >
-      Test
+      <h1>A Nested List Editor</h1>
     </Grid>
   </Container>
 );

@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import gameStoryReducer from "./slices/gamesStorySlice";
+import nestedListReducer from "./slices/nestedListSlice";
 
 const persistConfig = {
   key: "root",
@@ -18,13 +18,13 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  gameStory: gameStoryReducer,
+  nestedList: nestedListReducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
