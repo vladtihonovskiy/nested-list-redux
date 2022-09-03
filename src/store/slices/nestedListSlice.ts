@@ -1,19 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { v4 as uuidv4 } from 'uuid';
-import {
-  NestedListState,
-} from "./nestedListSlice.types";
+import { v4 as uuidv4 } from "uuid";
+import { NestedListState } from "./nestedListSlice.types";
 
 const defaultNestedList = [
-  { id: uuidv4(), value: 'Coffee' },
-  { id: uuidv4(), value: 'Tea', nestedList: [
-      { id: uuidv4(), value: 'Black Tea' },
-      { id: uuidv4(), value: 'Green Tea' }
-    ] },
-  { id: uuidv4() ,value: 'Milk', nestedList: [] }
+  { id: uuidv4(), value: "Coffee" },
+  {
+    id: uuidv4(),
+    value: "Tea",
+    nestedList: [
+      { id: uuidv4(), value: "Black Tea" },
+      { id: uuidv4(), value: "Green Tea" },
+    ],
+  },
+  { id: uuidv4(), value: "Milk", nestedList: [] },
 ];
-
 
 const initialState: NestedListState = {
   nestedList: defaultNestedList,
