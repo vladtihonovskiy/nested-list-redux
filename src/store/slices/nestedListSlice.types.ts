@@ -1,4 +1,4 @@
-export enum Direction {
+export enum MoveDirection {
   Up = "UP",
   Down = "DOWN",
 }
@@ -32,5 +32,5 @@ export interface RemoveItemPayload {
 
 export interface MoveItemPayload {
   path: string[];
-  direction: Direction;
+  direction: MoveDirection;
 }

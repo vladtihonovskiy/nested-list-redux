@@ -5,7 +5,7 @@ import { get } from "lodash";
 import {
   AddNewItemPayload,
   AddNewSublistPayload,
-  Direction,
+  MoveDirection,
   MoveItemPayload,
   NestedListState,
   RemoveItemPayload,
@@ -82,7 +82,7 @@ export const nestedListSlice = createSlice({
       const pathLength = path.length;
 
       const currentIndex = path[pathLength - 1];
-      const moveDirection = direction === Direction.Up ? -1 : +1;
+      const moveDirection = direction === MoveDirection.Up ? -1 : +1;
       const nextIndex = +currentIndex + moveDirection;
 
       /** in case if this is top level of array * */
@@ -95,7 +95,6 @@ export const nestedListSlice = createSlice({
         return;
       }
 
-      console.log("path ===", path);
       const pathWithoutLastElement = path.slice(0, -1);
       arrayMoveElementByIndexWithImmer(
         get(state.nestedList, pathWithoutLastElement),

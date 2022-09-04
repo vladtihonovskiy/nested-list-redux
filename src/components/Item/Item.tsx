@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import IItemProps from "./Item.types";
 import List from "../List/List";
-import { Direction } from "../../store/slices/nestedListSlice.types";
+import { MoveDirection } from "../../store/slices/nestedListSlice.types";
 import useItemHook from "./useItemHook";
 
 export const Item: React.FC<IItemProps> = ({
@@ -25,7 +25,7 @@ export const Item: React.FC<IItemProps> = ({
     if (isFirstItem) return null;
 
     return (
-      <button onClick={actions.onMoveItemClickHandler(Direction.Up)}>Up</button>
+      <button onClick={actions.onMoveItemClickHandler(MoveDirection.Up)}>Up</button>
     );
   }, [isFirstItem, actions]);
 
@@ -33,7 +33,7 @@ export const Item: React.FC<IItemProps> = ({
     if (isLastItem) return null;
 
     return (
-      <button onClick={actions.onMoveItemClickHandler(Direction.Down)}>
+      <button onClick={actions.onMoveItemClickHandler(MoveDirection.Down)}>
         Down
       </button>
     );

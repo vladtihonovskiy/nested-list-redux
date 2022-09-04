@@ -7,7 +7,7 @@ import {
   removeSublist,
 } from "../../store/slices/nestedListSlice";
 import {
-  Direction,
+  MoveDirection,
   ListItemType,
 } from "../../store/slices/nestedListSlice.types";
 
@@ -32,8 +32,7 @@ export default function useItemHook(
   }, [dispatch, itemPath]);
 
   const onMoveItemClickHandler = useCallback(
-    (direction: Direction) => () => {
-      console.log(itemPath);
+    (direction: MoveDirection) => () => {
       dispatch(moveItem({ path: itemPath, direction }));
     },
     [dispatch, itemPath]
