@@ -16,9 +16,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-       <PersistGate loading={null} persistor={persistor}>
-      <App />
-       </PersistGate>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
     <ToastContainer />
   </React.StrictMode>

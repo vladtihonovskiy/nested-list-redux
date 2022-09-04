@@ -1,13 +1,13 @@
 import React, { useMemo } from "react";
-import { Button, IconButton, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import IItemProps from "./Item.types";
+// eslint-disable-next-line import/no-cycle
 import List from "../List/List";
 import { MoveDirection } from "../../store/slices/nestedListSlice.types";
 import useItemHook from "./useItemHook";
 import styles from "./Item.module.css";
-
 
 export const Item: React.FC<IItemProps> = ({
   value,
