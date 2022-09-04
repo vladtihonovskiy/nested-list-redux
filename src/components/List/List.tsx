@@ -21,25 +21,23 @@ export const List: React.FC<IListProps> = ({ list, path }: IListProps) => {
   );
 
   return (
-    <>
-      <ul>
-        {lisaArray.map(({ id, value, nestedList }, index) => (
-          <Item
-            key={id}
-            id={id}
-            value={value}
-            nestedList={nestedList as []}
-            itemPath={[...pathToParentArray, index.toString()]}
-            isFirstItem={index === 0}
-            isLastItem={index === lisaArray.length - 1}
-            index={index}
-          />
-        ))}
-        <li>
-          <AddInput onAddClick={onAddClick} />
-        </li>
-      </ul>
-    </>
+    <ul>
+      {lisaArray.map(({ id, value, nestedList }, index) => (
+        <Item
+          key={id}
+          id={id}
+          value={value}
+          nestedList={nestedList as []}
+          itemPath={[...pathToParentArray, index.toString()]}
+          isFirstItem={index === 0}
+          isLastItem={index === lisaArray.length - 1}
+          index={index}
+        />
+      ))}
+      <li>
+        <AddInput onAddClick={onAddClick} />
+      </li>
+    </ul>
   );
 };
 

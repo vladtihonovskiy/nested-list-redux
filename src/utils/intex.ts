@@ -10,3 +10,6 @@ export const arrayMoveElementByIndexWithImmer = (
   arr.splice(toIndex, 0, element);
   return arr;
 };
+
+export const randomItem = (items: string[]) =>
+  items[Math.floor(Math.random() * items.length)];

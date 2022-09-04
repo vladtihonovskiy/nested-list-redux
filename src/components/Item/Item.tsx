@@ -1,8 +1,13 @@
 import React, { useMemo } from "react";
+import { Button, IconButton, Typography } from "@mui/material";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import IItemProps from "./Item.types";
 import List from "../List/List";
 import { MoveDirection } from "../../store/slices/nestedListSlice.types";
 import useItemHook from "./useItemHook";
+import styles from "./Item.module.css";
+
 
 export const Item: React.FC<IItemProps> = ({
   value,
@@ -25,7 +30,14 @@ export const Item: React.FC<IItemProps> = ({
     if (isFirstItem) return null;
 
     return (
-      <button onClick={actions.onMoveItemClickHandler(MoveDirection.Up)}>Up</button>
+      <Button
+        color="info"
+        variant="contained"
+        size="small"
+        onClick={actions.onMoveItemClickHandler(MoveDirection.Up)}
+      >
+        <ArrowUpwardIcon />
+      </Button>
     );
   }, [isFirstItem, actions]);
 
@@ -33,9 +45,14 @@ export const Item: React.FC<IItemProps> = ({
     if (isLastItem) return null;
 
     return (
-      <button onClick={actions.onMoveItemClickHandler(MoveDirection.Down)}>
-        Down
-      </button>
+      <Button
+        color="info"
+        variant="contained"
+        size="small"
+        onClick={actions.onMoveItemClickHandler(MoveDirection.Down)}
+      >
+        <ArrowDownwardIcon />
+      </Button>
     );
   }, [isLastItem, actions]);
 
@@ -43,7 +60,14 @@ export const Item: React.FC<IItemProps> = ({
     if (isNestedListExist) return null;
 
     return (
-      <button onClick={actions.onAddSublistClickHandler}>Add Sublist</button>
+      <Button
+        color="success"
+        variant="contained"
+        size="small"
+        onClick={actions.onAddSublistClickHandler}
+      >
+        Add Sublist
+      </Button>
     );
   }, [isNestedListExist, actions]);
 
@@ -51,15 +75,20 @@ export const Item: React.FC<IItemProps> = ({
     if (!isNestedListExist) return null;
 
     return (
-      <button onClick={actions.onRemoveSublistClickHandler}>
+      <Button
+        color="warning"
+        variant="contained"
+        size="small"
+        onClick={actions.onRemoveSublistClickHandler}
+      >
         Remove Sublist
-      </button>
+      </Button>
     );
   }, [isNestedListExist, actions]);
 
   return (
-    <li>
-      <span>{value}</span>
+    <li className={styles.itemContainer}>
+      <Typography display="inline">{value}</Typography>
       {renderUpButton}
 
       {renderDownButton}
@@ -68,7 +97,14 @@ export const Item: React.FC<IItemProps> = ({
 
       {renderRemoveSublistButton}
 
-      <button onClick={actions.onRemoveItemClickHandler}>Remove</button>
+      <Button
+        color="error"
+        variant="contained"
+        size="small"
+        onClick={actions.onRemoveItemClickHandler}
+      >
+        Remove
+      </Button>
       {renderNestedList}
     </li>
   );
