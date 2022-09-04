@@ -12,6 +12,7 @@ export const AddInput: React.FC<IAddInputProps> = ({
 
   const onSubmitButtonClick = useCallback(() => {
     onAddClick(inputValue);
+    setInputValue("");
   }, [inputValue]);
 
   const isButtonDisabled = inputValue.trim().length < 3;

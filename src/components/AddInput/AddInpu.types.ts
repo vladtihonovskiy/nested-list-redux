@@ -1,3 +1,3 @@
 export default interface IAddInputProps {
-  onAddClick: (value: string) => void
+  onAddClick: (value: string) => void;
 }

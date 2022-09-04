@@ -5,6 +5,7 @@ export default interface IItemProps {
   value: string;
   nestedList?: ListItemType[];
   isFirstItem: boolean;
+  isLastItem: boolean;
   index: number;
-  itemPath: string[]
+  itemPath: string[];
 }

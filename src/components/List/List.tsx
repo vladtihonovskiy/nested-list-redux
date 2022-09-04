@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import IListProps from "./List.types";
 import { useAppSelector } from "../../hooks/useAppSelector";
-import Item from "../Item/Item";
 import { AddInput } from "../AddInput/AddInput";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import Item from "../Item/Item";
+import { addNewItem } from "../../store/slices/nestedListSlice";
 
 export const List: React.FC<IListProps> = ({ list, path }: IListProps) => {
+  const dispatch = useAppDispatch();
   const lisaArray =
     list || useAppSelector((state) => state.nestedList.nestedList);
 
-  const pathToParentArray = path || ["0"];
+  const pathToParentArray = useMemo(() => path || [], [path]);
+
+  const onAddClick = useCallback(
+    (text: string) => {
+      dispatch(addNewItem({ value: text, path: pathToParentArray }));
+    },
+    [dispatch, pathToParentArray]
+  );
 
   return (
     <>
@@ -18,14 +28,15 @@ export const List: React.FC<IListProps> = ({ list, path }: IListProps) => {
             key={id}
             id={id}
             value={value}
-            nestedList={nestedList}
+            nestedList={nestedList as []}
             itemPath={[...pathToParentArray, index.toString()]}
             isFirstItem={index === 0}
+            isLastItem={index === lisaArray.length - 1}
             index={index}
           />
         ))}
         <li>
-          <AddInput onAddClick={() => {}} />
+          <AddInput onAddClick={onAddClick} />
         </li>
       </ul>
     </>
